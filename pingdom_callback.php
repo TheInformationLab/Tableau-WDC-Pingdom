@@ -1,6 +1,5 @@
 <?php
 //START CONFIGURATION//
-
 $appKey = "ENTER YOUR APP KEY HERE";
 
 //END CONFIGURATION//
@@ -24,6 +23,16 @@ if(isset($_GET['offset'])) {
         $offset = $_GET['offset'];
 } else {
         $offset = "";
+}
+if(isset($_GET['from'])) {
+        $from = $_GET['from'];
+} else {
+        $from = "";
+}
+if(isset($_GET['to'])) {
+        $to = $_GET['to'];
+} else {
+        $to = "";
 }
 
 if ($req == "checks") {
@@ -59,7 +68,7 @@ if ($req == "checks") {
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.pingdom.com/api/2.0/results/$check?offset=$offset&limit=1000",
+    CURLOPT_URL => "https://api.pingdom.com/api/2.0/results/$check?offset=$offset&from=$from&to=$to&limit=1000",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
